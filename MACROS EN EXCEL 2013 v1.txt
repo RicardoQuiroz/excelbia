@@ -1,0 +1,1052 @@
+﻿Presentación P1: https://goo.gl/BUV2ey
+Presentación P2: https://goo.gl/GFJjvY
+Presentación P3: https://goo.gl/PI6QH8
+Códigos: https://goo.gl/piqrwk
+Programa Ejemplo: https://goo.gl/Lz6xzA
+
+1.	Variables
+a.	Definición
+b.	Declaración
+c.	Tipos
+i.	Locales
+ii.	Públicas
+iii.	Estáticas
+2.	Constantes
+3.	Conversión
+4.	Libros
+a.	Abrir libros
+b.	Cerrar libros
+c.	Guardar libros
+d.	Borrar libros
+e.	Crear libros
+f.	Imprimir libros
+g.	Calcular libros
+h.	Proteger / Desproteger libros
+i.	Listar libros
+5.	Hojas
+a.	Agregar
+b.	Seleccionar hojas
+c.	Seleccionar vs. Activar
+d.	Mover hojas
+e.	Borrar hojas
+f.	Copiar hojas
+g.	Ocultar / Mostrar hojas
+h.	Nombrar
+i.	Proteger / Desproteger hojas
+j.	Vista previa de hojas
+k.	Imprimir hojas
+l.	Color de etiquetas
+m.	Ordenar hojas
+6.	Rangos
+a.	Selección de celdas
+b.	Selección de rangos
+c.	Selección de filas
+d.	Selección de columnas
+e.	Otras selecciones
+f.	Insertar rangos
+g.	Borrar rangos
+h.	Copiar y pegar rangos
+i.	Nombrar rangos
+j.	Combinar rangos
+k.	Ocultar / Mostrar rangos
+l.	Proteger / Desproteger rangos
+m.	Transponer rangos
+n.	Ordenar rangos
+o.	Borrar rangos
+p.	Imprimir rangos
+q.	Eliminar filas vacías
+r.	Restringir movimiento
+7.	Scroll Bars
+8.	Arrays
+a.	Definición
+b.	Fijos
+c.	Variables
+d.	Bidimensionales
+e.	Redim
+f.	Preserve
+9.	Estructuras
+a.	Do Loop
+b.	For Next
+c.	For Each Next
+d.	While Wend
+e.	Go To
+f.	With End With
+g.	If Then
+h.	Select Case
+i.	DoEvents
+j.	On Error GoTo
+k.	On Error Resume Next
+10.	Built in Dialogs
+11.	Barras de Herramientas
+a.	Crear Toolbar
+b.	PopUp
+c.	Mostrar / Ocultar Toolbar
+d.	Deshabilitar Controles
+12.	Menús
+a.	Crear menú
+b.	Agregar Controles al menú
+13.	Comandos
+a.	Mensajes de alerta
+b.	Barra de estado
+c.	Msgbox
+d.	Inputbox
+
+
+
+
+
+Sub ZoomIn()
+' Acceso directo: CTRL+i
+' to zoom in
+ActiveWindow.Zoom = (ActiveWindow.Zoom + 10)
+End Sub
+
+Sub ZoomOut()
+' Acceso directo: CTRL+o
+'to zoom out
+ActiveWindow.Zoom = (ActiveWindow.Zoom - 10)
+End Sub
+
+Private Sub Oculta_Interface()
+ActiveWindow.DisplayWorkbookTabs = False 'Oculta las fichas de las hohas
+ActiveWindow.DisplayHeadings = False 'Oculta títulos
+Application.DisplayFormulaBar = False 'Oculta la barra de formulas
+ActiveWindow.DisplayGridlines = False 'Oculta las lineas de la cuadricula
+Application.DisplayStatusBar = False 'Oculta la barra de estado
+Application.DisplayFullScreen = True 'Ves pantalla completa
+'ActiveSheet.Protect "123" 'Protege la hoja con la contraseña 123
+End Sub
+
+Private Sub Muestra_Interface()
+ActiveWindow.DisplayWorkbookTabs = True
+ActiveWindow.DisplayHeadings = True
+Application.DisplayFormulaBar = True
+ActiveWindow.DisplayGridlines = True
+Application.DisplayStatusBar = True
+Application.DisplayFullScreen = False
+'ActiveSheet.Protect "123" 'Protege la hoja con la contraseña 123
+End Sub
+
+Sub Hola()
+MsgBox "Hola mundo!"
+End Sub
+
+Sub Multiplica()
+e = 40
+MsgBox "Tu edad en diez años: " & e
+End Sub
+
+Sub Concatena()
+n = Inputbox ("Escribe tu nombre")
+ap = Inputbox ("Escribe tu apellido paterno")
+MsgBox "Tu nombre es: " & n & " " & ap
+End Sub
+
+Sub Multiplica2()
+n1 = Inputbox ("Escribe un número")
+n2 = Inputbox ("Escribe otro número")
+mult = n1*n2
+MsgBox "La multiplicación de " & n1 & " y " & n2 & " es " & mult
+End Sub
+
+Sub area_circulo()
+' p. 93
+r = 3
+Pi = 3.1416
+MsgBox "El area del circulo de radio: " & r & " es: " & r * r * Pi
+End Sub
+
+Sub npares()
+Dim x As Integer
+zz = 2 ' Incrementa el número que se va a mostrar en las celdas
+y = 1 ' Me mueve de fila en fila
+x = InputBox("¿Cuántos pares, porfisss?")
+xxx:
+Cells(y, 1) = zz ' Escribe el valor de zz en cada celda
+y = y + 1 ' incrementa la var para moverme de fila en fila
+zz = zz + 2 ' incrementa la var del valor a mostrar en cada celda
+' Controlamos si el pedido del usuario (X) ha llegado al límite
+If zz > x * 2 Then Exit Sub
+GoTo xxx
+End Sub
+
+Sub ejemplo_mensaje10()
+' p. 154
+Dim rpta As Integer
+rpta = MsgBox("¿Desea continuar?", 4)
+If rpta = 7 Then
+	MsgBox ("Hasta pronto...")
+	Exit Sub
+Else
+	MsgBox ("Continuamos trabajando")
+End If
+End Sub
+
+Private Sub ejemplo()
+' p. 82
+ n = InputBox("Ingrese su nombre")
+ A = InputBox("Ingrese su apellido")
+ Range("a1").Value = n & " " & A
+End Sub
+
+Sub ejemplo3()
+' p. 191
+ Dim monto As Double
+ Dim f_pago As String
+ Dim descuento As Double
+ Otravez:
+ monto = Val(InputBox("Ingrese monto a pagar"))
+ f_pago = UCase(InputBox("Ingrese forma de pago" _
+ & "Contado (C) Tarjeta (T)"))
+ if f_pago = "C" OR f_pago = "T" then
+	If monto > 5000 and f_pago = "C" Then
+		descuento = monto * 10 / 100
+	End If
+ else
+	MsgBox ("Valores inválidos. Intente otra vez")
+	goto OtraVez
+ end if
+ MsgBox "Total a pagar " & monto - descuento
+End Sub
+
+Sub ejemplo3()
+' p. 193
+Dim nombre As String
+Dim sexo As String
+nombre = UCase(InputBox("Ingrese su nombre: "))
+sexo = UCase(InputBox("Ingrese su sexo: " & _
+ "(F: femenino, M: Masculino)"))
+ If sexo = "F" Then
+	MsgBox "Hola Sra. " & nombre
+ Else
+	MsgBox "Hola Sr. " & nombre
+ End If
+End Sub
+
+Sub ejemplo4()
+' p. 194
+Dim n1 As Byte, n2 As Byte, n3 As Byte
+Dim P As Double
+n1 = Val(InputBox("Ingrese nota curso A: "))
+n2 = Val(InputBox("Ingrese nota curso B: "))
+n3 = Val(InputBox("Ingrese nota curso C: "))
+ P = (n1 * 2 + n2 * 3 + n3 * 4) / (2 + 3 + 4)
+ If P >= 8 Then
+	MsgBox "Promedio ponderado = " & P & _
+	" Puede llevar más de 20 créditos)"
+ Else
+	MsgBox "Promedio ponderado = " & P & _
+	" Sólo puede llevar hasta 20 créditos)"
+ End If
+End Sub
+
+Sub ejemplo_If_anidado()
+' p. 198
+Dim importe As Single
+Dim total As Single
+importe = InputBox(“Ingrese Importe: “)
+If importe >= 500 Then
+	total = importe - importe * 30 / 100
+	MsgBox “Importe a cobrar: “ & total
+Else
+	If importe >= 200 And importe < 500 Then
+		total = importe - importe * 20 / 100
+		MsgBox “Importe a cobrar: “ & total
+	Else
+		If importe >= 100 And importe < 200 Then
+			total = importe - importe * 10 / 100
+			MsgBox “Importe a cobrar: “ & total
+		Else
+			MsgBox “Importe a cobrar: “ & importe
+		End If
+	End If
+End If
+End Sub
+
+Sub ifs_anidados()
+Dim edad As Integer
+xxx:
+edad = Val(InputBox("cuantos años tienes?"))
+if edad <= 0 or edad > 120 then
+	Msgbox "inválido"
+	goto xxx
+end if
+If edad > 0 And edad < 13 Then
+    MsgBox "niño"
+Else
+    If edad >= 13 And edad < 20 Then
+        MsgBox "adolescente"
+    Else
+        If edad >= 20 And edad < 31 Then
+            MsgBox "joven"
+        Else
+            If edad >= 31 And edad <= 60 Then
+                MsgBox "adulto"
+            Else
+                If edad > 60 And edad < 120 Then
+                    MsgBox "adulto mayor"
+                End If
+            End If
+        End If
+    End If
+End If
+End Sub
+
+
+Sub PasarParametros_Formula()
+' Requiere que haya una tabla en las celdas A1:B6 
+' y que la primera columna tenga números
+Cells(5, 5) = InputBox("¿Qué número buscamos?")
+Range("A1").Select
+' CTRL Flecha abajo para ir hasta el final de la tabla
+Selection.End(xlDown).Select
+' Nos ubicamos en la primera celda vacía debajo de la tabla
+ActiveCell.Offset(1, 0).Range("A1").Select
+' EL primer parámetro de la Búsqueda Vertical es obtenido
+' de la celda R[-2]C[4], es decir de la E5
+ActiveCell.FormulaR1C1 = "=VLOOKUP(R[-2]C[4],R[-6]C:R[-1]C[1],2)"
+End Sub
+
+Sub UsarFormulas()
+' Cómo usar usar fórmulas de Excel en VBA
+'-A---B--
+' 1   a
+' 2   b
+' 7   c
+' 4   d
+' 5   e
+'
+' Se asigna el nombre "rango" a las celdas A1:B5
+Set rango = Worksheets("hoja1").Range("A1:B5")
+' Se usa "Application." antes de usar cada fórmula de Excel
+Respuesta = Application.IfError(Application.VLookup(3, rango, 2), "Error")
+MsgBox Respuesta
+End Sub
+
+
+Sub PasarParametros_Formula2()
+' Requiere que haya una tabla en las celdas A1:B6
+' y que la primera columna tenga números
+Cells(1, 1) = InputBox("¿Qué número buscamos?")
+Range("b1").Select
+ActiveCell.FormulaR1C1 = "=VLOOKUP(RC[-1],R[16]C[-1]:R[1]C,2)"
+End Sub
+
+Sub FormulaR1C1_RangoVariable()
+' Este macro pasa parámetros a una FormulaR1C1 en forma de rango
+' Requiere que los datos estén formateados así:
+'   A          B
+'Fila Final     28
+'Columna Final   2
+'Promedio       47.73913043
+'			EDADES
+'			25
+'			52
+'			79
+'			25
+'			30
+'			69
+'			47
+'			58
+'			76
+
+Range("B5").Select
+' CTRL Flecha abajo para ir hasta el final de la tabla
+Selection.End(xlDown).Select
+' Nos ubicamos en la primera celda vacía debajo de la tabla
+ActiveCell.Offset(1, 0).Range("A1").Select
+Cells(1, 2) = ActiveCell.Row
+Cells(2, 2) = ActiveCell.Column
+x = Cells(1, 2)
+Range("B3").Select
+' EL primer parámetro de la Búsqueda Vertical es obtenido
+' de la celda R[-2]C, es decir de la B1
+ActiveCell.FormulaR1C1 = "=AVERAGE(R[2]C:R[" & ActiveSheet.UsedRange.Rows.Count & "]C)"
+' Otra versión
+'Dim rowNum As Integer
+'Range("M1").Select
+'rowNum = ActiveSheet.Cells(Rows.Count, ActiveCell.Column).End(xlUp).Row
+'ActiveCell.FormulaR1C1 = "=SUM(R[2]C:R[" & rowNum & "]C)"
+End Sub
+
+
+
+Sub Valida_SoloVal()
+' Val convierte a 0 una entrada de letras
+' IsNumeric verifica si una variable almacena un número
+x = Val(InputBox("Escribe un número"))
+r = IsNumeric(x)
+MsgBox x & " " & r
+End Sub
+
+Private Sub Valida_Cancel()
+' Verifica si se presionó Cancel en el Inputbox
+    Dim Str As String
+    Str = InputBox("Escriba la fecha MM/DD/YYY", "Confirmación de fecha", Now)
+    If Str = vbNullString Then
+        MsgBox ("Cancelado por el Usuario!")
+    End If
+End Sub
+
+
+Sub Valida_Dim_y_Val()
+Dim x As Integer
+' La existencia de Dim provoca un error de
+' tipo de dato al introducir un texto
+x = InputBox("Escribe un número")
+r = IsNumeric(x)
+MsgBox r & " " & x
+End Sub
+
+
+Sub Valida_Dim_Val_OnError1()
+	Dim x As Integer
+	On Error Resume Next
+	' La línea superior instruye al VBA a ignorar el error
+	' y continuar ejecutando la siguiente línea de código
+	x = InputBox("Escribe un número")
+	r = IsNumeric(x)
+	MsgBox r & " " & x
+End Sub
+
+
+Sub Valida_Dim_Val_OnError2()
+	Dim x As Integer
+	On Error GoTo CasoError
+	' La línea superior instruye al VBA a ir a la etiqueta
+	' CasoError cuando se produzca un error
+	x = InputBox("Escribe un número")
+	r = IsNumeric(x)
+	MsgBox r & " " & x
+	Exit Sub
+	CasoError:
+	MsgBox "Ha surgido un error, intente otra vez"
+	' Es necesario un Exit Sub antes de la etiqueta CasoError
+	' sino este MsgBox se ejecutaría siempre
+End Sub
+
+
+Sub Celdas01()
+	MsgBox "Valor en la celda actual: " & ActiveCell.Value
+End Sub
+
+
+Sub Celdas02()
+	' Muestra en una ventana el valor de la celda actual y sus coordenadas
+	x = ActiveCell.Value
+	If ActiveCell.Value = "" Then
+		MsgBox ("Esta vacía")
+	Else
+		MsgBox "Valor " & x & " en la celda: " & ActiveCell.Address
+	End If
+End Sub
+
+Sub Macro()
+	' Escribe los números enteros del 1 al 25 en la columna A de la hoja
+	Dim X As Byte
+    For X = 1 To 25
+        Cells(X, 1) = X
+    Next X
+End Sub
+
+
+Sub ejemplo_bucle_For_Next()
+	' p. 208
+	Dim i As Integer
+	Dim suma As Integer
+	For i = 1 To 100
+		If (i Mod 5) = 0 Then
+			suma = suma + i
+		End If
+	Next
+	MsgBox "La suma de los múltiplos de 5 entre 1 y 100 es: " &suma
+End Sub
+
+
+Sub ejemplo_step()
+' p. 209
+ Dim i As Integer
+ Dim suma As Integer
+ Dim potencia As Integer
+ For i = 1 To 10 Step 2
+	potencia = i ^ 2
+	Range("A" & i).Value = i
+	Range("B" & i).Value = "="
+	Range("C" & i).Value = potencia
+ Next
+End Sub
+
+
+Sub ejemplo_For_Next_Exit()
+' p. 212
+Dim contrasenia As String
+Dim i As Integer
+For i = 1 To 5
+	contrasenia = InputBox("Ingrese contraseña")
+	If contrasenia = "123" Then
+		mensaje = 1
+		Exit For
+	Else
+		mensaje = 2
+	End If
+Next
+If mensaje = 1 Then
+	MsgBox "Bienvenido al sistema"
+Else
+	MsgBox "Ha olvidado su contraseña, " & _
+	"comuníquese con el administrador", _
+	vbOKOnly + vbCritical
+End If
+End Sub
+
+
+Sub ejemplo_do_until()
+' p. 217
+Do Until i > 10
+	suma = suma + i
+	i = i + 1
+Loop
+MsgBox "La suma de los primeros 10 " & "nros enteros es: " & suma
+End Sub
+
+
+Sub Celdas03()
+Do Until IsEmpty(ActiveCell)
+    If ActiveCell.Value = "" Then
+        MsgBox ("Esta vacía")
+    Else
+        x = ActiveCell.Value
+        MsgBox "Valor " & x & " en la celda: " & ActiveCell.Address
+    End If
+ActiveCell.Offset(1, 0).Select
+Loop
+End Sub
+
+
+Sub Colorea()
+[A1].EntireRow.Select
+Do Until ActiveCell.Value = ""
+	Selection.EntireRow.Interior.ColorIndex = 15
+	Selection.Offset(2, 0).Select
+Loop
+End Sub
+
+
+Sub ejemplo_do_while()
+' p. 217
+ Do While i <= 10
+	suma = suma + i
+	i = i + 1
+ Loop
+MsgBox "La suma de los primeros 10 " & _
+ "nros enteros es: " & suma
+End Sub
+
+
+Sub ejemplo_bucle_Do_Loop()
+' p. 215
+Dim i As Integer
+Dim n As Integer
+Dim suma As Integer
+n = InputBox("ingrese cantidad de números")
+ Do
+	i = i + 1
+	If (i Mod 5) = 0 Then
+		suma = suma + i
+	End If
+ Loop While i < n
+ MsgBox "La suma de los múltiplos de 5 entre" & _
+ "1 y " & n & " es: " & suma
+End Sub
+
+
+Sub ejemplo_Do()
+' p. 219
+Dim contrasenia As String
+Dim i As Integer
+i = 0
+Do
+	i = i + 1
+	If i > 5 Then
+		MsgBox "Ha olvidado su contraseña, " & _
+		"comuníquese con el administrador"
+		Exit Do
+	End If
+	contrasenia = InputBox("Ingrese su contraseña")
+ Loop Until contrasenia = "123"
+ MsgBox "Bienvenido al sistema"
+End Sub
+
+
+Sub Colorea2()
+[A1].EntireRow.Select ' Comenzamos desde la fila 1
+Do ' Comenzamos a evaluar
+	' Si la celda activa no tiene valor salimos del macro
+	If ActiveCell.Value = "" Then Exit Do 
+		' Si la celda tiene valor pinta la fila de gris
+		Selection.EntireRow.Interior.ColorIndex = 15 
+		Selection.Offset(2).Select ' Nos movemos a la fila siguiente
+Loop ' Comenzamos nuevamente el bucle desde el Do
+End Sub
+
+
+Sub ejemplo_bucle_While_Wend()
+' p. 220
+Dim contador As Integer
+Dim n As Integer
+Dim suma As Integer
+n = InputBox("ingrese cantidad de números")
+While contador <= n
+    contador = contador + 1
+     If (contador Mod 5) = 0 Then
+        suma = suma + contador
+     End If
+Wend
+MsgBox "La suma de los múltiplos de 5 " & _
+ "entre 1 y " & n & " es: " & suma
+End Sub
+
+
+' Crea un Msgbox que no esclaviza al Excel
+Private Declare PtrSafe Function APIMsgBox _
+    Lib "User32" Alias "MessageBoxA" _
+       (Optional ByVal hWnd As Long, _
+        Optional ByVal prompt As String, _
+        Optional ByVal title As String, _
+        Optional ByVal buttons As Long) _
+    As Long
+Sub msgbox_no_modal()
+Dim resp As Long
+resp = APIMsgBox(prompt:="Múevete por la tabla como gustes ..." & vbCrLf & _
+           "Presiona Yes cuando hayas terminado", buttons:=vbYesNo)
+' Este if es opcional
+If resp = vbYes Then
+    MsgBox "Seleccionaste la celda : " & ActiveCell.Address & vbCrLf & _
+           "Debes presionar Aceptar para continuar", vbInformation
+End If
+End Sub
+
+
+Sub fechas()
+' Ajustamos el ancho de las columnas
+Columns("a:a").ColumnWidth = 15.78
+Columns("b:b").ColumnWidth = 9
+Columns("c:c").ColumnWidth = 15.78
+Columns("d:d").ColumnWidth = 9
+' Convierte a formato fecha la entrada
+f = CDate(InputBox("Vamos a comparar dos fechas." _
+& Chr(13) & Chr(13) & "Escriba una fecha (DD/MM/AA):"))
+Cells(1, 1) = "Fecha Usuario:"
+Cells(1, 2) = f
+Cells(2, 1) = "Fecha Día Usuario :"
+' Almacena fórmulas en las celdas
+Cells(2, 2).FormulaR1C1 = "=day(R1C2)"
+Cells(3, 1) = "Fecha Mes Usuario:"
+Cells(3, 2).FormulaR1C1 = "=month(R1C2)"
+Cells(4, 1) = "Fecha Año Usuario:"
+Cells(4, 2).FormulaR1C1 = "=year(R1C2)"
+' Idem columnas C y D
+Cells(1, 3) = "Fecha Hoy:"
+Cells(1, 4).FormulaR1C1 = "=today()"
+Cells(2, 3) = "Fecha Día Hoy :"
+Cells(2, 4).FormulaR1C1 = "=day(R1C4)"
+Cells(3, 3) = "Fecha Mes Hoy:"
+Cells(3, 4).FormulaR1C1 = "=month(R1C4)"
+Cells(4, 3) = "Fecha Año Hoy:"
+Cells(4, 4).FormulaR1C1 = "=year(R1C4)"
+' Calcula la cantidad de días entre fechas
+Cells(6, 1) = "Distancia entre las dos fechas:"
+Cells(10, 1) = Cells(1, 4) - Cells(1, 2)
+Cells(7, 1) = "En días: " & Cells(10, 1).Value & " días"
+Cells(10, 1).Select
+' Fix devuelve la parte entera de un número decimal
+meses = Fix(ActiveCell / 30)
+Cells(8, 1).Select
+ActiveCell = "En meses: " & meses & " meses"
+End Sub
+
+
+
+
+Sub recorre_tabla()
+' Esta macro permite recorrer una tabla que empieza en A4 hasta encontrar una celda vacía
+Range("A4").Activate
+Do While Not IsEmpty(ActiveCell) 'señala que el interior del bucle se repetirá hasta que encuentre una celda vacía
+'aquí pueden haber (o no) otras sentencias
+ActiveCell.Offset(1, 0).Activate 'activa la celda inmediatamente inferior a la actual celda activa
+Loop
+End Sub
+
+Sub IdentificarNumerodeFilayColumnadeCeldaActiva()
+'Esta macro identifica el número de Columna y Fila de la celda activa
+'los guarda en variables y los presenta en un cuadro de texto
+Dim NroFila As Integer
+Dim NroColumna As Integer
+NroFila = ActiveCell.Row
+NroColumna = ActiveCell.Column
+MsgBox "La celda activa se encuentra en: " & vbCrLf & " - Fila " & NroFila & vbCrLf & " - Columna " & NroColumna
+End Sub
+
+
+
+Sub AdicionaReg()
+Range("A1").Activate
+Do While Not IsEmpty(ActiveCell)
+    ActiveCell.Offset(1, 0).Activate
+Loop
+' Incrementa el COD para nuevo registro
+ActiveCell.Value = ActiveCell.Offset(-1, 0).Value + 1
+x = InputBox("Nombre para el registro " & ActiveCell.Value)
+ActiveCell.Offset(0, 1).Activate
+ActiveCell.Value = x
+End Sub
+
+
+Private Sub EliminaReg()
+Dim y As Integer
+Range("A1").Activate
+y = InputBox("¿Qué registro quiere eliminar (escriba el número de código)?")
+Do While Not IsEmpty(ActiveCell)
+    If y = ActiveCell.Value Then
+        z = MsgBox("Registro encontrado" & Chr(13) & "Nombre: " _
+        & ActiveCell.Offset(-0, 1).Value & Chr(13) & _
+        "¿Confirma eliminación?", vbYesNo)
+        If z = 6 Then
+            ActiveCell.EntireRow.Delete
+            MsgBox ("Registro eliminado")
+            Exit Sub
+        Else
+            MsgBox ("Eliminación cancelada")
+            Exit Sub
+        End If
+    Else
+        sw = 1
+    End If
+    ActiveCell.Offset(1, 0).Activate
+Loop
+If sw = 1 Then
+    MsgBox ("Código no encontrado. Fin de la búsqueda")
+End If
+End Sub
+
+
+Sub ModificaReg()
+Dim y As Integer
+Range("A1").Activate
+y = InputBox("¿Qué registro quiere modificar (escriba el número de código)?")
+Do While Not IsEmpty(ActiveCell)
+    If y = ActiveCell.Value Then
+        z = MsgBox("Registro encontrado" & Chr(13) & "Nombre Actual: " _
+        & ActiveCell.Offset(0, 1).Value & Chr(13) & _
+        "¿Confirma modificación?", vbYesNo)
+        If z = 6 Then
+            yy = InputBox("Nuevo nombre:")
+            ActiveCell.Offset(0, 1).Value = yy
+            yy = InputBox("Nuevo CI:")
+            ActiveCell.Offset(0, 2).Value = yy
+            yy = InputBox("Nuevo Edad:")
+            ActiveCell.Offset(0, 3).Value = yy
+			' Aqui deberían ir los otros Inputbox para sus columnas
+            'zz = InputBox("Nuevo NIT:")
+            'ActiveCell.Offset(0, 2).Value = zz
+            Exit sub
+        Else
+            MsgBox ("Modificación cancelada")
+            Exit Sub
+        End If
+    Else
+        sw = 1
+    End If
+    ActiveCell.Offset(1, 0).Activate
+Loop
+If sw = 1 Then
+    MsgBox ("Código no encontrado. Fin de la búsqueda")
+End If
+End Sub
+
+Private Sub MueveReg()
+' Macro para mover un registro a otra tabla
+Dim y As Integer
+' El libro debe tener por lo menos dos hojas.
+' La Hoja 2 debe tener la misma cantidad de columnas que la hoja 1
+' y la hoja 1, con la tabla a analizar, debe ser la activa
+Range("A1").Activate
+y = InputBox("¿Qué registro quiere mover (escriba el número de código)?")
+Do While Not IsEmpty(ActiveCell)
+    If y = ActiveCell.Value Then
+        Z = MsgBox("Registro encontrado" & Chr(13) & "Nombre: " _
+        & ActiveCell.Offset(-0, 1).Value & Chr(13) & _
+        "¿Confirma el traslado del registro? (éste será eliminado de la tabla actual)", vbYesNo)
+        If Z = 6 Then
+            ' Asumimos que pueden haber ya varias filas movidas en la hoja 2
+            ' por lo tanto, nos movemos hasta el final de su tabla
+            Sheets(2).Activate
+            Range("A1").Activate
+            Do While Not IsEmpty(ActiveCell)
+                ActiveCell.Offset(1, 0).Activate
+            Loop
+            ' Nos guardamos el número de fila y columna en variables
+            NroFila = ActiveCell.Row
+            NroColumna = ActiveCell.Column
+
+            ' ***********************
+            ' Aqui movemos cada celda
+            ' Repiten cada fila dependiendo de cuantas celdas quieran mover
+            ' ***********************
+            Sheets(1).Activate
+            Sheets(2).Cells(NroFila, NroColumna) = ActiveCell.Value
+            Sheets(2).Cells(NroFila, NroColumna + 1) = ActiveCell.Offset(0, 1).Value
+            Sheets(2).Cells(NroFila, NroColumna + 2) = ActiveCell.Offset(0, 2).Value
+            Sheets(2).Cells(NroFila, NroColumna + 3) = ActiveCell.Offset(0, 3).Value
+            Sheets(2).Cells(NroFila, NroColumna + 4) = ActiveCell.Offset(0, 4).Value
+                       
+            ' Volvemos a la hoja 1 para borrar la fila
+            Sheets(1).Activate
+            ActiveCell.EntireRow.Delete
+            MsgBox ("Registro movido")
+            Exit Sub
+        Else
+            MsgBox ("Traslado de registro cancelado")
+            Exit Sub
+        End If
+    Else
+        sw = 1
+    End If
+    ActiveCell.Offset(1, 0).Activate
+Loop
+If sw = 1 Then
+    MsgBox ("Código no encontrado. Fin de la búsqueda")
+End If
+End Sub
+
+Private Sub CopiaReg()
+' Macro para copiar un registro a otra tabla
+Dim y As Integer
+' El libro debe tener por lo menos dos hojas.
+' La Hoja 2 debe tener la misma cantidad de columnas que la hoja 1
+' y la hoja 1, con la tabla a analizar, debe ser la activa
+Range("A1").Activate
+y = InputBox("¿Qué registro quiere copiar (escriba el número de código)?")
+Do While Not IsEmpty(ActiveCell)
+    If y = ActiveCell.Value Then
+        Z = MsgBox("Registro encontrado" & Chr(13) & "Nombre: " _
+        & ActiveCell.Offset(-0, 1).Value & Chr(13) & _
+        "¿Confirma la copia del registro?", vbYesNo)
+        If Z = 6 Then
+            ' Asumimos que pueden haber ya varias filas copiadas en la hoja 2
+            ' por lo tanto, nos movemos hasta el final de su tabla
+            Sheets(2).Activate
+            Range("A1").Activate
+            Do While Not IsEmpty(ActiveCell)
+                ActiveCell.Offset(1, 0).Activate
+            Loop
+            ' Nos guardamos el número de fila y columna en variables
+            NroFila = ActiveCell.Row
+            NroColumna = ActiveCell.Column
+
+            ' ***********************
+            ' Aqui copiamos cada celda
+            ' Repiten cada fila dependiendo de cuantas celdas quieran copiar
+            ' ***********************
+            Sheets(1).Activate
+            Sheets(2).Cells(NroFila, NroColumna) = ActiveCell.Value
+            Sheets(2).Cells(NroFila, NroColumna + 1) = ActiveCell.Offset(0, 1).Value
+            Sheets(2).Cells(NroFila, NroColumna + 2) = ActiveCell.Offset(0, 2).Value
+            Sheets(2).Cells(NroFila, NroColumna + 3) = ActiveCell.Offset(0, 3).Value
+            Sheets(2).Cells(NroFila, NroColumna + 4) = ActiveCell.Offset(0, 4).Value
+                       
+            MsgBox ("Registro copiado")
+            Exit Sub
+        Else
+            MsgBox ("Copia de registro cancelado")
+            Exit Sub
+        End If
+    Else
+        sw = 1
+    End If
+    ActiveCell.Offset(1, 0).Activate
+Loop
+If sw = 1 Then
+    MsgBox ("Código no encontrado. Fin de la búsqueda")
+End If
+End Sub
+
+
+
+
+Sub Mostrar_Array_en_MsgBox()
+  Dim myArray() As Variant
+  Dim txt As String
+  Dim i As Long
+  
+  myArray = Array("Line1", "Line2", "Line3", "Line4")
+  ' Comienza en la posición 0 del array (Low Bound)
+  ' hasta su posición más elevada (Upper Bound)
+  For i = LBound(myArray) To UBound(myArray)
+    txt = txt & myArray(i) & " "
+'    vbCrLf
+  Next i
+  
+  MsgBox txt
+End Sub
+
+
+Sub Descubrir_contraseña()
+' Para desproteger una hoja protegida con contraseña
+' Se posiciona en la hoja que quiere desproteger y ejecuta la macro
+Dim a As Integer, b As Integer, c As Integer
+Dim d As Integer, e As Integer, f As Integer
+Dim a1 As Integer, a2 As Integer, a3 As Integer
+Dim a4 As Integer, a5 As Integer, a6 As Integer
+On Error Resume Next
+For a = 65 To 66: For b = 65 To 66: For c = 65 To 66
+For d = 65 To 66: For e = 65 To 66: For a1 = 65 To 66
+For a2 = 65 To 66: For a3 = 65 To 66: For a4 = 65 To 66
+For a5 = 65 To 66: For a6 = 65 To 66: For f = 32 To 126
+Contraseña = Chr(a) & Chr(b) & Chr(c) & Chr(d) & Chr(e) & Chr(a1) _
+& Chr(a2) & Chr(a3) & Chr(a4) & Chr(a5) & Chr(a6) & Chr(f)
+ActiveSheet.Unprotect Contraseña
+If ActiveSheet.ProtectContents = False Then
+MsgBox "¡Enhorabuena!" & vbCr & "La contraseña es:" & vbCr & Contraseña
+Exit Sub
+End If
+Next: Next: Next: Next: Next: Next
+Next: Next: Next: Next: Next: Next
+End Sub
+
+
+
+
+
+
+
+Sub GeneraLibrosMayores()
+' Verifica si estamos en la celda A1
+NroFila = ActiveCell.Row
+NroColumna = ActiveCell.Column
+If NroFila <> 1 And NroColumna <> 1 Then
+    Range("a1").Activate
+End If
+
+'***********************************************
+'* INICIO Dibuja el encabezado del libro mayor *
+'***********************************************
+
+' Cambia el ancho de las columnas
+Columns("A:G").ColumnWidth = 1.9
+' Escribe el nombre de la cuenta
+Cuenta = "CUENTA"
+ActiveCell.Offset(1, 1).Value = Cuenta
+' Pinta la fila debajo del nombre de la cuenta
+ActiveCell.Offset(2, 1).Activate
+For i = 1 To 7
+    'Cells(ActiveCell.Row, i) = "-"
+    Cells(ActiveCell.Row, i).Interior.Color = RGB(13, 13, 13)
+Next
+'Cambia la altura de la fila
+ActiveCell.Rows("1:1").EntireRow.RowHeight = 5
+' Escribe los títulos del DEBE y el HABER
+ActiveCell.Offset(1, 0).Value = "DEBE"
+ActiveCell.Offset(1, 2).Interior.Color = RGB(13, 13, 13)
+ActiveCell.Offset(1, 2).Columns("A:A").EntireColumn.ColumnWidth = 0.5
+ActiveCell.Offset(1, 3).Value = "HABER"
+' Pinta la fila debajo del título DEBE y HABER
+ActiveCell.Offset(2, -1).Activate
+For i = 1 To 7
+    Cells(ActiveCell.Row, i).Interior.Color = RGB(13, 13, 13)
+Next
+'Cambia la altura de la fila
+ActiveCell.Rows("1:1").EntireRow.RowHeight = 5
+'********************************************
+'* FIN Dibuja el encabezado del libro mayor *
+'********************************************
+
+
+End Sub
+
+
+Cells(2, 10).GoalSeek _
+goal:=Cells(CopyRowID + 13, CopyColID).Value, _
+Changingcell:=Worksheets("Parts").Cells(DestRowID + 9, DestColID)
+
+
+GoalCell = Worksheets("Parts").Cells(DestRowID + 10, DestColID)
+Value = Worksheets("ICA").Cells(CopyRowID + 13, CopyColID).Value
+ChangeCell= Worksheets("Parts").Cells(DestRowID + 9, DestColID)
+
+GoalCell.GoalSeek Goal:=Value, ChangingCell:=ChangeCell
+
+Range("J2").GoalSeek Goal:=1500, ChangingCell:=Range("J4")
+
+
+
+
+
+
+
+
+
+Sub recorre_tabla()
+Range("B3").Activate
+If Cells(3, 2).Value > 70 Then
+    Cells(3, 3).Value = Cells(3, 2).Value / 20
+End If
+Do While Not IsEmpty(ActiveCell)
+ActiveCell.Offset(1, 0).Activate
+If Cells(ActiveCell.Row, 2).Value > 70 Then
+    Cells(ActiveCell.Row, 3).Value = Cells(ActiveCell.Row, 2).Value / 20
+Else
+    Cells(ActiveCell.Row, 4).Value = Cells(ActiveCell.Row, 2).Value + 50
+End If
+
+
+Loop
+
+
+
+Sub EscribeTabla()
+Cells(1, 1) = "C.I"
+Cells(1, 2) = "EDAD"
+Cells(1, 3) = "CELULAR"
+Cells(1, 5) = "NOMBRE"
+Cells(1, 7) = "APELLIDO"
+
+For i = 2 To 6
+    Cells(i, 1).Select
+    ActiveCell.FormulaR1C1 = "=randbetween(1000000,9999999)"
+    Cells(i, 2).Select
+    ActiveCell.FormulaR1C1 = "=randbetween(1,100)"
+    Cells(i, 3).Select
+    ActiveCell.FormulaR1C1 = "=randbetween(60000000,7999999999)"
+    Cells(i, 4).Select
+    ActiveCell.FormulaR1C1 = "=randbetween(1,4)"
+    If Cells(i, 4) = 1 Then
+        Cells(i, 5) = "Diana"
+    Else
+        If Cells(i, 4) = 2 Then
+            Cells(i, 5) = "Carlos"
+        Else
+            If Cells(i, 4) = 3 Then
+                Cells(i, 5) = "Eva"
+            Else
+                Cells(i, 5) = "Daniel"
+            End If
+        End If
+    End If
+    Cells(i, 6).Select
+    ActiveCell.FormulaR1C1 = "=randbetween(1,3)"
+    If Cells(i, 6) = 1 Then
+        Cells(i, 7) = "Quispe"
+    Else
+        If Cells(i, 6) = 2 Then
+            Cells(i, 7) = "Camargo"
+        Else
+            If Cells(i, 4) = 3 Then
+                Cells(i, 5) = "Campos"
+            Else
+                Cells(i, 5) = "Quiroz"
+            End If
+        End If
+    End If
+Next
+End Sub
